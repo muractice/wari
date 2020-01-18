@@ -14,9 +14,8 @@ public class DrinkingParty {
     }
 
     public Payment calcurate(){
-        Price price = new Price(billing.getPrice().getValue() / members.getMembersNumber().getValue());
-        return new Payment(price);
+        return Payment.create(Price.create(billing.getPrice().getValue()).devide(members.getMembersNumber().getValue()));
+//        return Payment.create(members,billing);
     }
-
 
 }

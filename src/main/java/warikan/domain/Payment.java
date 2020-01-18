@@ -10,4 +10,13 @@ public class Payment {
     public Price getPrice() {
         return price;
     }
+
+    public static Payment create(Price price){
+        return new Payment(price);
+    }
+
+//    public static Payment create(Members members,Billing billing){
+//        return new Payment(Price.create(billing.getPrice().getValue()).devide(members.getMembersNumber().getValue()));
+//    }
+
 }

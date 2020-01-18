@@ -1,17 +1,20 @@
 package warikan.service
 
 import spock.lang.Specification
+import spock.lang.Unroll
 import warikan.domain.Billing
 import warikan.domain.Member
 import warikan.domain.Members
-import warikan.domain.Payment
 import warikan.domain.Price
 
+@Unroll
 class CalcuratePaymentTest extends Specification {
     def "test calcurate"() {
-        when:
+        setup:
         CalcuratePayment calcuratePayment = new CalcuratePayment();
         List<Member> members = memberList.asList()
+
+        when:
         def result = calcuratePayment.calcurate(new Members(members),new Billing(new Price(billing)))
 
         then:
