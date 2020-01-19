@@ -12,4 +12,8 @@ public class Members {
         return new MembersNumber(values.size());
     }
 
+    int getTotalWeight(){
+        return values.stream().mapToInt(Member::getPaymentWeight).sum();
+    }
+
 }

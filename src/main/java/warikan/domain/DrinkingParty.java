@@ -13,8 +13,18 @@ public class DrinkingParty {
         return new DrinkingParty(members,billing);
     }
 
+//    public Payment calcurate(){
+//        return Payment.create(
+//                Price.create(billing.getPrice().getValue())
+//                        .devide(members.getTotalWeight())
+//        );
+
     public Payment calcurate(){
-        return Payment.create(Price.create(billing.getPrice().getValue()).devide(members.getMembersNumber().getValue()));
+        return Payment.create(
+                Price.create(billing.getPrice().getValue())
+                        .devide(members.getTotalWeight())
+        );
+
 //        return Payment.create(members,billing);
     }
 
