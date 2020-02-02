@@ -1,19 +1,17 @@
 package warikan.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.List;
 
 @AllArgsConstructor
 public class Members {
-    private final List<Member> values;
-
-    MembersNumber getMembersNumber(){
-        return new MembersNumber(values.size());
-    }
+    @Getter
+    private final List<Member> members;
 
     int getTotalWeight(){
-        return values.stream().mapToInt(Member::getPaymentWeight).sum();
+        return members.stream().mapToInt(Member::getPaymentWeight).sum();
     }
 
 }

@@ -1,22 +1,23 @@
 package warikan.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
+@ToString
+@EqualsAndHashCode
 @AllArgsConstructor
 public class Payment {
-    private final Price price;
+    private final Member member;
+    private final PaymentPricePerMember paymentPricePerMember;
 
-    public Price getPrice() {
-        return price;
-    }
-
-    public static Payment create(Price price){
-        return new Payment(price);
-    }
-
-//    public static Payment create(Members members,Billing billing){
-//        return new Payment(Price.create(billing.getPrice().getValue()).devide(members.getMembersNumber().getValue()));
+//    public static Payment create(Member member,PaymentPricePerMember paymentPricePerMember){
+//        return new Payment(member,paymentPricePerMember);
 //    }
+
+    public static Payment create(Member member,PricePerWeight pricePerWeight){
+        return new Payment(member,PaymentPricePerMember.create(pricePerWeight.getPrice().multiply(member.getPaymentWeight())));
+    }
 
 }

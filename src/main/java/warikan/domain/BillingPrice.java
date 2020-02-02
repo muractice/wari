@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public class Billing {
+public class BillingPrice {
     @Getter
     private final Price price;
 

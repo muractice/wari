@@ -2,11 +2,13 @@ package warikan.service
 
 import spock.lang.Specification
 import spock.lang.Unroll
-import warikan.domain.Billing
+import warikan.PaymentBuilder
+import warikan.domain.BillingPrice
 import warikan.domain.Member
 import warikan.domain.MemberName
 import warikan.domain.Members
 import warikan.domain.PaymentKubun
+import warikan.domain.Payments
 import warikan.domain.Price
 
 @Unroll
@@ -14,29 +16,53 @@ class CalcuratePaymentTest extends Specification {
     def "test calcurate"() {
         setup:
         CalcuratePayment calcuratePayment = new CalcuratePayment();
-//        List<Member> members = memberList.asList()
 
         when:
-//        def result = calcuratePayment.calcurate(new Members(members),new Billing(new Price(billing)))
-        def result = calcuratePayment.calcurate(new Members(member),new Billing(new Price(billing)))
+        def result = calcuratePayment.calcurate(new Members(member), new BillingPrice(new Price(billing)))
 
         then:
-        result.getPrice().getValue() == expected
+        result == expected
+//        result == PaymentsBuilder.create(memberNames,paymentKubns,pricePerWeight)
 
         where:
         member << [
-                [new Member(new MemberName("hide"),PaymentKubun.LOW)],
-                [new Member(new MemberName("hide"),PaymentKubun.LOW)
-                    ,new Member(new MemberName("hige"),PaymentKubun.HIGH)]
-                        ]
-        billing << [10000,10000]
-        expected << [10000,2500]
+                [new Member(new MemberName("hide"), PaymentKubun.LOW)]
+                ,[new Member(new MemberName("hide"), PaymentKubun.LOW)
+                 , new Member(new MemberName("hige"), PaymentKubun.LOW)]
+                ,[new Member(new MemberName("mura"), PaymentKubun.MIDDLE)
+                  , new Member(new MemberName("hige"), PaymentKubun.HIGH)]
 
+        ]
+        billing << [10000
+                    , 10000
+                    ,10000]
+        memberNames << [["hide"]
+                        ,["hide","hige"]
+                        ,["mura","hige"]]
+//        paymentKubns << [[PaymentKubun.LOW]
+//                        ,[PaymentKubun.LOW,PaymentKubun.LOW]
+//                         ,[PaymentKubun.MIDDLE,PaymentKubun.HIGH]]
+//        pricePerWeight << [10000,5000,2000]
+
+        expected << [new Payments([PaymentBuilder.create("hide",PaymentKubun.LOW,10000)])
+                     , new Payments([PaymentBuilder.create("hide", PaymentKubun.LOW, 5000)
+                                        , PaymentBuilder.create("hige", PaymentKubun.LOW, 5000)])
+                     , new Payments([PaymentBuilder.create("mura", PaymentKubun.MIDDLE, 2000)
+                                        , PaymentBuilder.create("hige", PaymentKubun.HIGH, 2000)])
+        ]
+
+//        expected << [Payments.create([PaymentBuilder.create("hide",PaymentKubun.LOW,10000)])
+//                     , Payments.create([PaymentBuilder.create("hide", PaymentKubun.LOW, 5000)
+//                                        , PaymentBuilder.create("hige", PaymentKubun.LOW, 5000)])
+//                     , Payments.create([PaymentBuilder.create("mura", PaymentKubun.MIDDLE, 2000)
+//                                        , PaymentBuilder.create("hige", PaymentKubun.HIGH, 2000)])
+//                ]
 
 //        where:
-//        memberList         | billing | expected
+//        memberList         | billingPrice | expected
 //        ["hide","hige"] | 10000 | 5000
 //        ["hide","hige","mei"] | 10000 | 3333
 //        ["hide","hige","mei","tomo"] | 12000 | 3000
     }
+
 }

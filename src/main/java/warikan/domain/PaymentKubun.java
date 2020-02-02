@@ -1,8 +1,11 @@
 package warikan.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
+@ToString
 @AllArgsConstructor
 public enum PaymentKubun {
     HIGH(3),

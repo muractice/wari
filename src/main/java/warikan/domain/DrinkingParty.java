@@ -4,28 +4,17 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class DrinkingParty {
-//    private final PartyName partyName;
+    //    private final PartyName partyName;
 //    private final HoldingDateTime holdingDateTime;
     private final Members members;
-    private final Billing billing;
+    private final BillingPrice billingPrice;
 
-    public static DrinkingParty set(Members members,Billing billing){
-        return new DrinkingParty(members,billing);
+    public static DrinkingParty set(Members members, BillingPrice billingPrice) {
+        return new DrinkingParty(members, billingPrice);
     }
 
-//    public Payment calcurate(){
-//        return Payment.create(
-//                Price.create(billing.getPrice().getValue())
-//                        .devide(members.getTotalWeight())
-//        );
-
-    public Payment calcurate(){
-        return Payment.create(
-                Price.create(billing.getPrice().getValue())
-                        .devide(members.getTotalWeight())
-        );
-
-//        return Payment.create(members,billing);
+    public Payments calcurate() {
+        return Payments.create(members,billingPrice);
     }
 
 }

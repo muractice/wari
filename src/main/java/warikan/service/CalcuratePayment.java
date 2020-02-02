@@ -3,9 +3,9 @@ package warikan.service;
 import warikan.domain.*;
 
 public class CalcuratePayment {
-    public Payment calcurate(Members members, Billing billing){
+    public Payments calcurate(Members members, BillingPrice billingPrice){
 
-        DrinkingParty drinkingParty = DrinkingParty.set(members,billing);
+        DrinkingParty drinkingParty = DrinkingParty.set(members, billingPrice);
         return drinkingParty.calcurate();
     }
 }
