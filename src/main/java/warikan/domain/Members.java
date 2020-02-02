@@ -10,8 +10,10 @@ public class Members {
     @Getter
     private final List<Member> members;
 
-    int getTotalWeight(){
-        return members.stream().mapToInt(Member::getPaymentWeight).sum();
+    TotalPaymentWeight getTotalWeight() {
+        return TotalPaymentWeight.create(members.stream()
+                .mapToInt(Member::getPaymentWeight)
+                .sum()
+        );
     }
-
 }

@@ -16,8 +16,8 @@ public class PricePerWeight {
 //        return new PricePerWeight(price);
 //    }
 
-    static PricePerWeight create(BillingPrice billingPrice, int totalWeight){
-        return new PricePerWeight(billingPrice.getPrice().devide(totalWeight));
+    static PricePerWeight create(BillingPrice billingPrice, TotalPaymentWeight totalPaymentWeight){
+        return new PricePerWeight(billingPrice.getPrice().devide(totalPaymentWeight.getValue()));
     }
 
 }
