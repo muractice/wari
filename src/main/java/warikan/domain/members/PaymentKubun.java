@@ -1,4 +1,4 @@
-package warikan.domain;
+package warikan.domain.members;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

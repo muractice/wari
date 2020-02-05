@@ -1,9 +1,12 @@
-package warikan.domain;
+package warikan.domain.payments;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import warikan.domain.BillingPrice;
+import warikan.domain.members.Members;
+import warikan.domain.weight.PricePerWeight;
 
 import java.util.List;
 import java.util.stream.Collectors;

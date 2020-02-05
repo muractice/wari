@@ -1,6 +1,8 @@
-package warikan.domain;
+package warikan.domain.drinking_party;
 
 import lombok.AllArgsConstructor;
+import warikan.domain.members.Members;
+import warikan.domain.payments.Payments;
 
 @AllArgsConstructor
 public class DrinkingParty {

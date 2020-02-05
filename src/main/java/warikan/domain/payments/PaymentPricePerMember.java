@@ -1,8 +1,9 @@
-package warikan.domain;
+package warikan.domain.payments;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import warikan.domain.Price;
 
 @EqualsAndHashCode
 @ToString

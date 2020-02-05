@@ -1,4 +1,4 @@
-package warikan.domain;
+package warikan.domain.weight;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

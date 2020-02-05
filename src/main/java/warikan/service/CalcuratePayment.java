@@ -1,6 +1,7 @@
 package warikan.service;
 
-import warikan.domain.*;
+import warikan.domain.members.Members;
+import warikan.domain.payments.Payments;
 
 public class CalcuratePayment {
     public Payments calcurate(Members members, BillingPrice billingPrice){

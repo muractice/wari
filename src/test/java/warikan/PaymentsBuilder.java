@@ -1,13 +1,5 @@
 package warikan;
 
-import warikan.domain.PaymentKubun;
-import warikan.domain.Payments;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class PaymentsBuilder {
 //    public static Payments create(List<String> memberNames, List<PaymentKubun> paymentKubuns, int pricePerWeight){
 //        int i = 0;

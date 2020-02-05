@@ -16,11 +16,11 @@ public class Price {
         return new Price(value);
     }
 
-    Price devide(int number){
+    public Price devide(int number){
         return new Price(value/number);
     }
 
-    Price multiply(int number){
+    public Price multiply(int number){
         return new Price(value * number);
     }
 

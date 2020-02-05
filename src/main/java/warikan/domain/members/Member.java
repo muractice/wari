@@ -1,8 +1,7 @@
-package warikan.domain;
+package warikan.domain.members;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
 
 @ToString
@@ -12,7 +11,7 @@ public class Member {
     private final MemberName memberName;
     private final PaymentKubun paymentKubun;
 
-    int getPaymentWeight(){
+    public int getPaymentWeight(){
         return paymentKubun.getWeight();
     }
 

@@ -3,12 +3,12 @@ package warikan.service
 import spock.lang.Specification
 import spock.lang.Unroll
 import warikan.PaymentBuilder
-import warikan.domain.BillingPrice
-import warikan.domain.Member
-import warikan.domain.MemberName
-import warikan.domain.Members
-import warikan.domain.PaymentKubun
-import warikan.domain.Payments
+import BillingPrice
+import warikan.domain.members.Member
+import warikan.domain.members.MemberName
+import warikan.domain.members.Members
+import warikan.domain.members.PaymentKubun
+import warikan.domain.payments.Payments
 import warikan.domain.Price
 
 @Unroll

@@ -1,6 +1,8 @@
 package warikan.domain;
 
 import lombok.AllArgsConstructor;
+import warikan.domain.members.Members;
+import warikan.domain.payments.Payments;
 
 @AllArgsConstructor
 public class CalcuratePaymentsBk {
