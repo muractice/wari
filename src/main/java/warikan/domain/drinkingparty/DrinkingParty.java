@@ -1,4 +1,4 @@
-package warikan.domain.drinking_party;
+package warikan.domain.drinkingparty;
 
 import lombok.AllArgsConstructor;
 import warikan.domain.members.Members;
@@ -15,7 +15,7 @@ public class DrinkingParty {
         return new DrinkingParty(members, billingPrice);
     }
 
-    public Payments calcurate() {
+    public Payments calculate() {
         return Payments.create(members,billingPrice);
     }
 

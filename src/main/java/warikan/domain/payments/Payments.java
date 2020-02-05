@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import warikan.domain.BillingPrice;
+import warikan.domain.drinkingparty.BillingPrice;
 import warikan.domain.members.Members;
 import warikan.domain.weight.PricePerWeight;
 
@@ -18,9 +18,6 @@ public class Payments {
     @Getter
     private final List<Payment> values;
 
-//    public static Payments create(List<Payment> payments){
-//        return new Payments(payments);
-//    }
 
     public static Payments create(Members members, BillingPrice billing) {
         PricePerWeight pricePerWeight = PricePerWeight.create(billing, members.getTotalWeight());
@@ -31,8 +28,6 @@ public class Payments {
                         .collect(Collectors.toList())
         );
     }
-
-//    private PricePerWeight calcuratePricePerWeight(BillingPrice billingPrice,)
 
 
 }

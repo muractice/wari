@@ -3,7 +3,7 @@ package warikan.service
 import spock.lang.Specification
 import spock.lang.Unroll
 import warikan.PaymentBuilder
-import BillingPrice
+import warikan.domain.drinkingparty.BillingPrice
 import warikan.domain.members.Member
 import warikan.domain.members.MemberName
 import warikan.domain.members.Members

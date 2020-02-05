@@ -4,6 +4,7 @@ import spock.lang.*
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
+import warikan.domain.drinkingparty.BillingPrice
 import warikan.domain.weight.PricePerWeight
 
 import static org.mockito.Mockito.*

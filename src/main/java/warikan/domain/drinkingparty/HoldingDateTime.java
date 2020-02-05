@@ -1,4 +1,4 @@
-package warikan.domain.drinking_party;
+package warikan.domain.drinkingparty;
 
 import lombok.AllArgsConstructor;
 

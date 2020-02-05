@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import warikan.domain.drinking_party.*;
+import warikan.domain.drinkingparty.BillingPrice;
 import warikan.domain.Price;
 
 @ToString
@@ -15,7 +15,7 @@ public class PricePerWeight {
     private final Price price;
 
 
-    static PricePerWeight create(BillingPrice billingPrice, TotalPaymentWeight totalPaymentWeight){
+    public static PricePerWeight create(BillingPrice billingPrice, TotalPaymentWeight totalPaymentWeight){
         return new PricePerWeight(billingPrice.getPrice().devide(totalPaymentWeight.getValue()));
     }
 
