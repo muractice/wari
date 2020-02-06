@@ -14,8 +14,12 @@ public class TotalPaymentWeight {
         return new TotalPaymentWeight(weight);
     }
 
+    public static TotalPaymentWeight create(){
+        return new TotalPaymentWeight(Weight.create(0));
+    }
+
     public TotalPaymentWeight sum(Weight weight){
-        return create(value.sum(weight));
+        return new TotalPaymentWeight(value.sum(weight));
     }
 
     int getWeightValue(){

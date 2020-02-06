@@ -14,6 +14,7 @@ public class Members {
     private final List<Member> members;
 
     public TotalPaymentWeight getTotalWeight() {
+
         return TotalPaymentWeight.create(
                 members.stream()
                 .map(Member::getPaymentWeight)

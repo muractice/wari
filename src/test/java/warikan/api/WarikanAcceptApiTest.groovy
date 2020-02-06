@@ -1,18 +1,42 @@
 package warikan.api
 
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import spock.lang.*
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
+@Unroll
+@WebMvcTest
 class WarikanAcceptApiTest extends Specification {
+    @Autowired
+    MockMvc mockMvc
+
     WarikanAcceptApi warikanAcceptApi = new WarikanAcceptApi()
 
-    @Unroll
-    def "invoke where request=#request then expect: #expectedResult"() {
-        expect:
-        warikanAcceptApi.invoke(request) == expectedResult
+    static final String apiPath = "/warikan"
 
-        where:
-        request       || expectedResult
-        new Request() || ["hoge": 0]
+    def "invoke where request=#request then expect: #expectedResult"() {
+        setup:
+        def builder = MockMvcRequestBuilders
+                .post(apiPath)
+
+        when:
+        def result = mockMvc.perform(builder)
+
+        then:
+        result.andDo(MockMvcResultHandlers.print());
+        result.andExpect(status().isOk())
+
+
+//        expect:
+//        warikanAcceptApi.invoke(request) == expectedResult
+
+//        where:
+//        request       || expectedResult
+//        new Request() || ["hoge": 0]
     }
 }
 
