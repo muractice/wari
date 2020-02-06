@@ -5,10 +5,10 @@ import warikan.domain.members.Member;
 import warikan.domain.members.MemberName;
 import warikan.domain.payments.Payment;
 import warikan.domain.members.PaymentKubun;
-import warikan.domain.weight.PricePerWeight;
+import warikan.domain.weight.PaymentPerWeight;
 
 public class PaymentBuilder {
     public static Payment create(String memberName, PaymentKubun paymentKubun, int pricePerWeight){
-        return Payment.create(new Member(new MemberName(memberName),paymentKubun),new PricePerWeight(Price.create(pricePerWeight)));
+        return Payment.create(new Member(new MemberName(memberName),paymentKubun),new PaymentPerWeight(Price.create(pricePerWeight)));
     }
 }

@@ -10,13 +10,13 @@ import warikan.domain.Price;
 @ToString
 @AllArgsConstructor
 @EqualsAndHashCode
-public class PricePerWeight {
+public class PaymentPerWeight {
     @Getter
     private final Price price;
 
 
-    public static PricePerWeight create(BillingPrice billingPrice, TotalPaymentWeight totalPaymentWeight){
-        return new PricePerWeight(billingPrice.getPrice().devide(totalPaymentWeight.getValue()));
+    public static PaymentPerWeight create(BillingPrice billingPrice, TotalPaymentWeight totalPaymentWeight){
+        return new PaymentPerWeight(billingPrice.getPrice().devide(totalPaymentWeight.getWeightValue()));
     }
 
 }

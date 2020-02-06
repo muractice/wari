@@ -22,7 +22,6 @@ class CalcuratePaymentTest extends Specification {
 
         then:
         result == expected
-//        result == PaymentsBuilder.create(memberNames,paymentKubns,pricePerWeight)
 
         where:
         member << [

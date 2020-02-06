@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.ToString;
 import warikan.domain.drinkingparty.BillingPrice;
 import warikan.domain.members.Members;
-import warikan.domain.weight.PricePerWeight;
+import warikan.domain.weight.PaymentPerWeight;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,11 +20,11 @@ public class Payments {
 
 
     public static Payments create(Members members, BillingPrice billing) {
-        PricePerWeight pricePerWeight = PricePerWeight.create(billing, members.getTotalWeight());
+        PaymentPerWeight paymentPerWeight = PaymentPerWeight.create(billing, members.getTotalWeight());
 
         return new Payments(
                 members.getMembers().stream()
-                        .map(m -> Payment.create(m, pricePerWeight))
+                        .map(m -> Payment.create(m, paymentPerWeight))
                         .collect(Collectors.toList())
         );
     }

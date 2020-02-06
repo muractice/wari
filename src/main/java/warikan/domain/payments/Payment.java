@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import warikan.domain.members.Member;
-import warikan.domain.weight.PricePerWeight;
+import warikan.domain.weight.PaymentPerWeight;
 
 @ToString
 @EqualsAndHashCode
@@ -14,8 +14,8 @@ public class Payment {
     private final PaymentPricePerMember paymentPricePerMember;
 
 
-    public static Payment create(Member member,PricePerWeight pricePerWeight){
-        return new Payment(member,PaymentPricePerMember.create(pricePerWeight.getPrice().multiply(member.getPaymentWeight())));
+    public static Payment create(Member member,PaymentPerWeight paymentPerWeight){
+        return new Payment(member,PaymentPricePerMember.create(paymentPerWeight.getPrice().multiply(member.getPaymentWeightValue())));
     }
 
 }
