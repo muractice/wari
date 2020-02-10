@@ -11,4 +11,13 @@ public class BillingPrice {
     @Getter
     private final Price price;
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    public String toString(){
+        return Integer.toString(price.getValue());
+    }
+
 }

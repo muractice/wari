@@ -7,6 +7,7 @@ import warikan.domain.members.Member;
 import warikan.domain.members.MemberName;
 import warikan.domain.members.Members;
 import warikan.domain.members.PaymentKubun;
+import warikan.domain.payments.Payment;
 import warikan.domain.payments.Payments;
 import warikan.service.CalcuratePayment;
 
@@ -29,6 +30,8 @@ public class WarikanMain {
         Payments payments = calcuratePayment.calcurate(Members.create(memberList),billingPrice);
 
         System.out.println("総額:"+ billingPrice);
-        payments.getValues().stream().forEach(payment -> {System.out.println(payment.getMember().getMemberName().getValue()+":"+payment.getPaymentPricePerMember().getPrice().getValue());});
+        payments.getValues().stream().forEach(System.out::println);
+//        payments.getValues().stream().forEach(payment -> {System.out.println(payment.toString());});
+//        payments.getValues().stream().forEach(payment -> {System.out.println(payment.getMember().getMemberName().getValue()+":"+payment.getPaymentPricePerMember().getPrice().getValue());});
     }
 }

@@ -16,9 +16,15 @@ public class Payment {
     @Getter
     private final PaymentPricePerMember paymentPricePerMember;
 
-
     public static Payment create(Member member,PaymentPerWeight paymentPerWeight){
         return new Payment(member,PaymentPricePerMember.create(paymentPerWeight.getPrice().multiply(member.getPaymentWeightValue())));
     }
+
+    public String toString(){
+        return new String(
+                "MemberName:"+member.getMemberName().getValue() +", PaymentPrice:" + paymentPricePerMember.getPrice().getValue()
+        );
+    }
+
 
 }
