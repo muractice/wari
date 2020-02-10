@@ -10,6 +10,7 @@ import warikan.domain.weight.Weight;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Member {
+    @Getter
     private final MemberName memberName;
     @Getter
     private final PaymentKubun paymentKubun;
@@ -19,6 +20,9 @@ public class Member {
     }
     public int getPaymentWeightValue(){
         return paymentKubun.getWeight().getValue();
+    }
+    public static Member create(MemberName memberName,PaymentKubun paymentKubun){
+        return new Member(memberName,paymentKubun);
     }
 
 }

@@ -21,12 +21,14 @@ public class WarikanMain {
         CalcuratePayment calcuratePayment = new CalcuratePayment();
 
         List<Member> memberList = new ArrayList<>(Arrays.asList(
-                new Member(new MemberName("mura"), PaymentKubun.LOW),
-                new Member(new MemberName("hide"), PaymentKubun.HIGH)
+                Member.create(new MemberName("mura"), PaymentKubun.LOW),
+                Member.create(new MemberName("hide"), PaymentKubun.HIGH)
         ));
 
-        Payments payments = calcuratePayment.calcurate(new Members(memberList),new BillingPrice(new Price(10000)));
+        BillingPrice billingPrice = new BillingPrice(new Price(10000));
+        Payments payments = calcuratePayment.calcurate(Members.create(memberList),billingPrice);
 
-        System.out.println(payments.toString());
+        System.out.println("総額:"+ billingPrice);
+        payments.getValues().stream().forEach(payment -> {System.out.println(payment.getMember().getMemberName().getValue()+":"+payment.getPaymentPricePerMember().getPrice().getValue());});
     }
 }

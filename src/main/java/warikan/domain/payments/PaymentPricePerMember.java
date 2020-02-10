@@ -2,6 +2,7 @@ package warikan.domain.payments;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import warikan.domain.Price;
 
@@ -9,6 +10,7 @@ import warikan.domain.Price;
 @ToString
 @AllArgsConstructor
 public class PaymentPricePerMember {
+    @Getter
     private final Price price;
 
     static PaymentPricePerMember create(Price price){

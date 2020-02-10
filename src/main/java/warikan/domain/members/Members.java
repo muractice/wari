@@ -21,4 +21,8 @@ public class Members {
                 .reduce(Weight::sum).get()
         );
     }
+
+    public static Members create(List<Member> members){
+        return new Members(members);
+    }
 }
