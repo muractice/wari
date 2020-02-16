@@ -9,11 +9,12 @@ import warikan.domain.members.Members;
 import warikan.domain.members.PaymentKubun;
 import warikan.domain.payments.Payment;
 import warikan.domain.payments.Payments;
+import warikan.domain.weight.Weight;
+import warikan.domain.weight.WeightOfPaymentKubun;
+import warikan.domain.weight.WeightOfPaymentKubuns;
 import warikan.service.CalcuratePayment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class WarikanMain {
 
@@ -22,12 +23,27 @@ public class WarikanMain {
         CalcuratePayment calcuratePayment = new CalcuratePayment();
 
         List<Member> memberList = new ArrayList<>(Arrays.asList(
-                Member.create(new MemberName("mura"), PaymentKubun.LOW),
-                Member.create(new MemberName("hide"), PaymentKubun.HIGH)
+                Member.create(MemberName.create("mura"), PaymentKubun.LOW),
+                Member.create(MemberName.create("hide"), PaymentKubun.MIDDLE),
+                Member.create(MemberName.create("hige"), PaymentKubun.HIGH)
         ));
 
-        BillingPrice billingPrice = new BillingPrice(new Price(10000));
-        Payments payments = calcuratePayment.calcurate(Members.create(memberList),billingPrice);
+        BillingPrice billingPrice = BillingPrice.create(Price.create(12000));
+
+//        List<WeightOfPaymentKubun> weightOfPaymentKubuns = new ArrayList<>(Arrays.asList(
+//                WeightOfPaymentKubun.create(PaymentKubun.LOW,Weight.create(3)),
+//                WeightOfPaymentKubun.create(PaymentKubun.MIDDLE,Weight.create(4)),
+//                WeightOfPaymentKubun.create(PaymentKubun.HIGH,Weight.create(5))
+//        ));
+
+        Map<PaymentKubun,Weight> tmpWeightOfPaymentKubuns = new HashMap<>();
+        tmpWeightOfPaymentKubuns.put(PaymentKubun.LOW,Weight.create(3));
+        tmpWeightOfPaymentKubuns.put(PaymentKubun.MIDDLE,Weight.create(4));
+        tmpWeightOfPaymentKubuns.put(PaymentKubun.HIGH,Weight.create(5));
+
+        Payments payments = calcuratePayment.calcurate(
+                Members.create(memberList),billingPrice, WeightOfPaymentKubuns.create(tmpWeightOfPaymentKubuns)
+        );
 
         System.out.println("総額:"+ billingPrice);
         payments.getValues().stream().forEach(System.out::println);

@@ -16,6 +16,10 @@ public class BillingPrice {
         return super.hashCode();
     }
 
+    public static BillingPrice create(Price price){
+        return new BillingPrice(price);
+    }
+
     public String toString(){
         return Integer.toString(price.getValue());
     }
